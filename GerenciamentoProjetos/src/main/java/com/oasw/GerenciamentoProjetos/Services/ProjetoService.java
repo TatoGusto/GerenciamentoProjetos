@@ -13,7 +13,7 @@ public class ProjetoService {
     @Autowired
     ProjetoRepository projetoRepository;
 
-    public ProjetoModel create(ProjetoModel projetoModel){
+    public ProjetoModel createProjeto(ProjetoModel projetoModel){
         return projetoRepository.save(projetoModel);
     }
 
