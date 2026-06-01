@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service /* Serve para identificar as regras operacionais, é um intermedio entre o controller e o repository
+            Ex: a classe projetoService compoem os metodos de criação, edição, pesquisa e exclusão de projetos.*/
 public class ProjetoService {
 
-    @Autowired
+    @Autowired /* Serve para injeção de dependência automática, sem que precise instanciar uma classe de forma manual.
+                  Ex: A classe ProjetoRepository já está sendo instaciada de forma automática.*/
     ProjetoRepository projetoRepository;
 
     public ProjetoModel createProjeto(ProjetoModel projetoModel){

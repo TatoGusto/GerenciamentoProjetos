@@ -4,12 +4,13 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "tb_projeto")
+@Entity // Serve para criar uma entidade ex:
+@Table(name = "tb_projeto")// Altera o nome da tabela
 public class ProjetoModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // Identifica a chave primária ex: long id é a chave primária
+    @GeneratedValue(strategy = GenerationType.IDENTITY) /* Gera automaticamente os valores da chave primária
+                                                           ex: neste caso acontece um auto-incremento no valor da chave primária. */
     private Long id;
     private String nome;
     private LocalDate dataInicio;

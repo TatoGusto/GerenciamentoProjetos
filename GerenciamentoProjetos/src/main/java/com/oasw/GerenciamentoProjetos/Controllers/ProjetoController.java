@@ -10,14 +10,15 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-@RestController
-@RequestMapping(path = "/projetos")
+@RestController // Recebe as requisições HTTP, as direciona para o Service, e retorna a resposta em JSON
+@RequestMapping(path = "/projetos") // Mapeia as rotas(URL)
 public class ProjetoController {
 
     @Autowired
     ProjetoService projetoService;
 
-    @PostMapping
+    // @RequestBody : Indica que os dados enviados pela requisição HTTP devem ser lidos e convertidos para o objeto java especiicado no parâmetro.
+    @PostMapping // Mapeia a requisição HTTP POST dentro do controller
     public ResponseEntity<ProjetoModel> createProjeto(@RequestBody ProjetoModel projetoModel){
         ProjetoModel request = projetoService.createProjeto(projetoModel);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -25,20 +26,21 @@ public class ProjetoController {
         return ResponseEntity.created(uri).body(request);
     }
 
-    @GetMapping
+    @GetMapping // Mapeia a requisição HTTP GET dentro do controller
     public ResponseEntity<List<ProjetoModel>> getAll(){
         List<ProjetoModel> request = projetoService.getAll();
         return ResponseEntity.ok().body(request);
     }
 
-    @GetMapping("/{id}")
+    // PathVariable : Extrai valores diretamente da própria URL e associa ao parâmetro
+    @GetMapping("/{id}") // Mapeia a requisição HTTP GET dentro do controller
     public ResponseEntity<ProjetoModel> getById(@PathVariable Long id){
         ProjetoModel request = projetoService.getById(id);
         return ResponseEntity.ok().body(request);
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // Mapeia a requisição HTTP DELETE dentro do controller
     public ResponseEntity<?> deleteById(@PathVariable Long id){
         projetoService.deleteById(id);
         return ResponseEntity.noContent().build();
